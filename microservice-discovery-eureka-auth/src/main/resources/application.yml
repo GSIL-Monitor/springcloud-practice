@@ -1,0 +1,23 @@
+server:
+  port: 8761
+  #context-path: http://peer1:8761/eureka
+eureka:
+  client:
+    register-with-eureka: false #是否将自己注册到Eureka Server，默认为true。由于当前应用就是Eureka Server，故设置为false
+    fetch-registry: false #是否哦从Eureka Server获取注册信息，默认为true。由于这是一个单节点的，不需要同步其他的ES节点数据，顾为false
+    service-url:
+      default-zone: http://lan:lan@localhost:8761/eureka/
+spring:
+  output:
+    ansi:
+      enabled: always
+logging:
+  level: debug
+security:
+  basic:
+    enabled: false
+  user:
+    name: lan
+    password: lan
+
+

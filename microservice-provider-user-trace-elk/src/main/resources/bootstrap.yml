@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: microservice-provider-user-trace-elk #由于使用了自定义的logback-spring.xml并且含有变量.spring.application.name，必须设置到yml中，否则无法正确读取属性。

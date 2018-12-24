@@ -1,0 +1,15 @@
+spring:
+  application:
+    # 对应config server 所获取的配置文件的{application}
+    name: microservice-foo
+  cloud:
+    config:
+      profile: dev
+      label: master #Git config 的master分支
+      discovery:
+        enabled: true #使用服务发现组件「Eureka」中的 Config Server，而不是自己指定 uri
+        service-id: microservice-config-server-eureka
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/

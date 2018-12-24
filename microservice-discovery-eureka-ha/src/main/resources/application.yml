@@ -1,0 +1,40 @@
+#java -jar microservice-discovery-eureka-ha-1.0.0-SNAPSHOT.jar --spring.profiles.active=peer1
+spring:
+  application:
+    name: discovery-eureka-ha
+  output:
+    ansi:
+      enabled: always
+eureka:
+  client:
+    service-url:
+      default-zone: http://peer1:8761/eureka/,http://peer2:8762/eureka/,http://peer3:8763/eureka/
+---
+spring:
+  profiles: peer1 #指定profile 为 peer1
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: peer1
+    appname: peer1
+
+---
+spring:
+  profiles: peer2 #指定profile 为 peer2
+server:
+  port: 8762
+eureka:
+  instance:
+    hostname: peer2
+    appname: peer2
+
+---
+spring:
+  profiles: peer3 #指定profile 为 peer3
+server:
+  port: 8763
+eureka:
+  instance:
+    hostname: peer3
+    appname: peer3

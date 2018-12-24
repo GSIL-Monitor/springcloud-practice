@@ -1,0 +1,10 @@
+#引导上下文的配置，是主应用程序的父上下文 p172
+spring:
+  application:
+    name: microservice-foo
+  cloud:
+    config:
+      uri: http://localhost:8080
+      profile: dev
+      #Git仓库的分支
+      label: master

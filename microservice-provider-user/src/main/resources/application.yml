@@ -1,0 +1,51 @@
+spring:
+  http:
+    encoding:
+      enabled: true
+      force: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:meituan;DB_CLOSE_DELAY=-1
+    username: admin
+    password: admin
+  jpa:
+    show-sql: true
+  application:
+    name: provider-user
+  output:
+    ansi:
+      enabled: always #彩色控制台
+#log 具体包的日志级别
+logging:
+    level:
+      org.hibernate: info
+      org.springframework: info
+#查看actuator配置
+management:
+  security:
+    enabled: false
+info:
+  author: lansing
+  email: lanxinyu@meituan:com
+  describe: \u4eba\u7269
+#rpc
+#当然，微服务即使只配置Eureka Server集群中的某个节点，也能正常注册Eureka 集群，因为多个Eureka Server 之前的数据会相互同步
+eureka:
+  client:
+    service-url:
+      defaultZone: http://lan:lan@discovery:8761/eureka/
+    register-with-eureka: true
+server:
+  port: 8000
+
+---
+spring:
+  profiles: node1
+server:
+  port: 8001
+
+---
+spring:
+  profiles: node2
+server:
+  port: 8002

@@ -1,0 +1,11 @@
+server:
+  port: 8081
+spring:
+  output:
+    ansi:
+      enabled: always
+logging:
+  level: debug
+management:
+  security:
+    enabled: false

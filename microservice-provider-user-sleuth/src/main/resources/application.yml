@@ -1,0 +1,23 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: microservice-provider-user-sleuth
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:meituan
+    username: lansing
+    password: lansing
+  jpa:
+    show-sql: true
+  output:
+    ansi:
+      enabled: always
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+logging:
+  level:
+    org.springframework.web.servlet.DispatcherServlet: debug
+    org.springframework.cloud.sleuth: debug

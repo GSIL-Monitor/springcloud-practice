@@ -1,0 +1,10 @@
+
+  microservice-gateway-zuul:
+    image: lanxinyu/microservice-gateway-zuul:1.0.0-SNAPSHOT
+    links:
+      - microservice-discovery-eureka:discovery
+
+  microservice-hystrix-turbine:
+    image: lanxinyu/microservice-hystrix-turbine:1.0.0-SNAPSHOT
+    links:
+      - microservice-discovery-eureka:discovery

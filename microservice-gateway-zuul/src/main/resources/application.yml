@@ -1,0 +1,24 @@
+server:
+  port: 8400
+spring:
+  output:
+    ansi:
+      enabled: always
+  application:
+    name: microservice-gateway-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery:8761/eureka/
+management:
+  security:
+    enabled: false
+zuul:
+  routes:
+    provider-user: /user/**
+    microservice-file-upload: /upload
+  #ignored-services: '*' #忽略所有微服务，只路由指定微服务
+logging:
+  level:
+    com.netflix: debug
+

@@ -1,0 +1,47 @@
+version: '3'
+#Version 2 file fomat 的固定写法，为project定义服务
+
+services:
+  #指定服务名称
+  microservice-discovery-eureka:
+    #指定服务所使用的镜像
+    image: lanxinyu/microservice-discovery-eureka:1.0.0-SNAPSHOT
+    #暴露端口信息
+    ports:
+      - "8761:8761"
+
+  microservice-provider-user:
+    image: lanxinyu/microservice-provider-user:1.0.0-SNAPSHOT
+    links:
+      - microservice-discovery-eureka:discovery
+    ports:
+      - "8000:8000"
+
+  microservice-consumer-movie-ribbon-hystrix:
+    image: lanxinyu/microservice-consumer-movie-ribbon-hystrix:1.0.0-SNAPSHOT
+    links:
+      - microservice-discovery-eureka:discovery
+    ports:
+      - "8110:8110"
+
+  microservice-gateway-zuul:
+    image: lanxinyu/microservice-gateway-zuul:1.0.0-SNAPSHOT
+    links:
+      - microservice-discovery-eureka:discovery
+    ports:
+      - "8400:8400"
+
+  microservice-hystrix-turbine:
+    image: lanxinyu/microservice-hystrix-turbine:1.0.0-SNAPSHOT
+    links:
+      - microservice-discovery-eureka:discovery
+    ports:
+      - "8031:8031"
+
+  microservice-consumer-movie-feign-hystrix-fallback-stream:
+    image: lanxinyu/microservice-consumer-movie-feign-hystrix-fallback-stream:1.0.0-SNAPSHOT
+    links:
+      - microservice-discovery-eureka:discovery
+    ports:
+      - "8104:8104"
+

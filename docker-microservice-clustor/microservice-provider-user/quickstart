@@ -1,0 +1,49 @@
+1,拉取java 镜像
+
+docker pull java
+
+2，把dockerfile 和 jar 按如下目录结构安置
+
+
+
+3，
+
+dockerfile（microservice-discovery-eureka）：
+
+Dockerfile
+486B
+jar:
+
+microservice-discovery-eureka-1.0.0-SNAPSHOT.jar
+38.08MB
+把
+
+Dockerfile和microservice-discovery-eureka-1.0.0-SNAPSHOT.jar
+
+放到一个目录下后，通过如下命令编译microservice/discovery-eureka image
+
+docker build -t microservice/discovery-eureka .
+
+4，
+
+dockerfile（microservice-provider-user）：
+
+Dockerfile
+439B
+jar：
+
+microservice-provider-user-1.0.0-SNAPSHOT.jar
+49.51MB
+把
+
+Dockerfile和microservice-discovery-eureka-1.0.0-SNAPSHOT.jar
+
+放到一个目录下后，通过如下命令编译microservice/provider-user image
+
+docker build -t microservice/provider-user .
+
+5，启动
+
+docker run -d -p 8761:8761 microservice/discovery-eureka
+
+docker run -p 8000:8000 microservice/provider-user 会看到注册服务中心时网络ping不通

@@ -1,0 +1,19 @@
+server:
+  port: 8410
+spring:
+  output:
+    ansi:
+      enabled: always
+  application:
+    name: microservice-gateway-zuul-aggregation
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+management:
+  security:
+    enabled: false
+logging:
+  level:
+    com.netflix: debug
+
